@@ -5,6 +5,10 @@ const User = new mongoose.Schema({
         type: String,
         required: true
       },
+      phonenumber: {
+        type: String,
+        required: true
+      },
       type: {
         type: String,
         enum: ['groom','bride'],
@@ -40,7 +44,6 @@ const User = new mongoose.Schema({
       },
       birthStar: {
         type: String,
-        required: true
       },
       disabled: {
         type: String,
@@ -82,10 +85,6 @@ const User = new mongoose.Schema({
         type: [String],
         required: true
       },
-    //   image: {
-    //     data: Buffer,
-    //     contentType: String
-    //   }
     image: {
         type: String,
         required: true 

@@ -14,9 +14,9 @@ module.exports.login = async (req, res) => {
         req.session.verificationCode = verificationCode;
         req.session.phonenumber = phonenumber;
   
-        return res.status(201).json({ verificationCode });
+        return res.status(200).json({ verificationCode });
       } else {
-        return res.status(401).json({ message: "Enter a valid 10 digit number" });
+        return res.status(400).json({ message: "Enter a valid 10 digit number" });
       }
     } catch (error) {
       console.log("error", error);
@@ -37,7 +37,7 @@ module.exports.verifyToken = async(req,res)=>{
           }
         
         if (enteredCode === verificationCode) {
-          return res.status(201).json({ message: 'Login successful' });
+          return res.status(200).json({ message: 'Login successful' });
         } else {
           
           return res.status(400).json({ message: 'Verification code is invalid' });
@@ -50,9 +50,7 @@ module.exports.verifyToken = async(req,res)=>{
 
     module.exports.resendToken = async (req, res) => {
         try {
-        //   const { phonenumber } = req.body;
-        //   const regex = /^\d{10}$/;
-          
+      
             const min = 1000; 
             const max = 9999; 
             
@@ -63,13 +61,7 @@ module.exports.verifyToken = async(req,res)=>{
             }
 
             req.session.verificationCode = verificationCode;
-            // const { code, phonenumber } = req.session.verificationCode;
-            // req.session.verificationCode.code = verificationCode;
-            //req.session.verificationCode = verificationCode;
-      
-            // Send the new verification code to the user's phone number
-            //logic.sendVerificationCode(verificationCode, phonenumber);
-      
+            
             return res.status(200).json({ verificationCode });
         } catch (error) {
           console.log('error', error);

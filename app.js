@@ -7,11 +7,6 @@ app.use(
     session({
       secret: 'session',
       resave: false,
-      saveUninitialized: true,
-    //   cookie: {
-    //     secure: true, // Set to 'true' if using HTTPS
-    //     maxAge: 3600000 // Session expiration time (in milliseconds)
-    //   }
     })
   );
 
